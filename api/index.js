@@ -7,6 +7,7 @@ const serverless = require('serverless-http');
 
 // Initialize Express
 const app = express();
+const server = require('http').createServer(app);
 app.use(cors());
 const PORT = process.env.PORT || 5000; // Define your port
 
@@ -17,14 +18,14 @@ connect();
 app.use(express.json());
 
 // Start Express server
-const server = app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
 // Initialize Socket.IO
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:4200", // Adjust the origin to match your Angular app's URL
+    origin: ["http://localhost:4200", "https://cows-bulls-e9faf.web.app/"],  // Adjust the origin to match your Angular app's URL
     methods: ["GET", "POST"],
   },
   transports: ["websocket", "polling"],
@@ -231,8 +232,5 @@ function checkGuess(guess, secret) {
 
   return { cows, bulls };
 }
-
-
-
 module.exports = app;
 module.exports.handler = serverless(app);
