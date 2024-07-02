@@ -3,11 +3,11 @@ const socketIo = require("socket.io");
 const cors = require('cors');
 const mongoose = require("mongoose"); // Added mongoose for MongoDB connection
 const { connect } = require("../connections/DbConnection"); // Assuming you have a db connection file
+const serverless = require('serverless-http');
 
 // Initialize Express
 const app = express();
 app.use(cors());
-const serverless = require('serverless-http');
 const PORT = process.env.PORT || 5000; // Define your port
 
 // Connect to MongoDB
