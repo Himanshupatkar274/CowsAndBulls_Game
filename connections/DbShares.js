@@ -6,7 +6,7 @@ async function createDocument(doc) {
   let client;
   try {
     client = await connect();
-    const database = client.db('sampleDB'); // Replace with your database name
+    const database = client.db('test'); // Replace with your database name
     const collection = database.collection('sampleCollection'); // Replace with your collection name
     
     const result = await collection.insertOne(doc);
@@ -27,7 +27,7 @@ async function readDocument(query) {
   let client;
   try {
     client = await connect();
-    const database = client.db('sampleDB'); // Replace with your database name
+    const database = client.db('test'); // Replace with your database name
     const collection = database.collection('sampleCollection'); // Replace with your collection name
     
     const user = await collection.findOne(query);
@@ -48,7 +48,7 @@ async function updateDocument(query, updateDoc) {
   let client;
   try {
     client = await connect();
-    const database = client.db('sampleDB'); // Replace with your database name
+    const database = client.db('test'); // Replace with your database name
     const collection = database.collection('sampleCollection'); // Replace with your collection name
     
     const result = await collection.updateOne(query, { $set: updateDoc });
@@ -69,7 +69,7 @@ async function deleteDocuments(query) {
   let client;
   try {
     client = await connect();
-    const database = client.db('sampleDB'); // Replace with your database name
+    const database = client.db('test'); // Replace with your database name
     const collection = database.collection('sampleCollection'); // Replace with your collection name
     
     const result = await collection.deleteMany(query);
